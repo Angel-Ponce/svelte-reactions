@@ -1,10 +1,24 @@
 <script lang="ts">
 	export let reaction = '🚀';
 	export let quantity = 0;
+
+	let active: boolean = false;
+
+	const toggleClick = (click: boolean) => {
+		active = click;
+	};
 </script>
 
-<div class="reaction">
-	<span class="emoji">
+<div
+	class="reaction"
+	on:mousedown={() => {
+		toggleClick(true);
+	}}
+	on:mouseup={() => {
+		toggleClick(false);
+	}}
+>
+	<span class={`emoji ${active ? 'active' : ''}`}>
 		{reaction}
 		{#if quantity > 0}
 			{quantity}
@@ -39,8 +53,9 @@
 		color: #888888;
 	}
 
-	.reaction .emoji:active {
-		transform: scale(0.85);
-		transition-duration: inherit;
+	.reaction .emoji.active {
+		transform: scale(0.92);
+		transition-property: transform;
+		transition-duration: 200ms;
 	}
 </style>
