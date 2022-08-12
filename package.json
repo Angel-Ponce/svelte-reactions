@@ -1,6 +1,17 @@
 {
 	"name": "svelte-reactions",
-	"version": "0.0.1",
+	"description": "Easy to use emoji reactions for your app.",
+	"version": "1.0.1",
+	"keywords": [
+		"reactions",
+		"svelte",
+		"emoji-reactions",
+		"emojis",
+		"svelte-reactions"
+	],
+	"exports": {
+		".": "./index.js"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -24,9 +35,20 @@
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
 		"svelte-preprocess": "^4.10.6",
+		"svelte2tsx": "^0.5.13",
 		"tslib": "^2.3.1",
 		"typescript": "^4.7.4",
 		"vite": "^3.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"license": "MIT",
+	"author": "Angel-Ponce",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Angel-Ponce/svelte-reactions.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Angel-Ponce/svelte-reactions/issues"
+	},
+	"homepage": "https://svelte.dev/repl/c0a37c14addc4f20b08692dc32863385?version=3.49.0"
 }
