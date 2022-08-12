@@ -1,3 +1,3 @@
-import Test from './Test.svelte';
+import Reaction from './Reaction.svelte';
 
-export { Test };
+export { Reaction as Test };

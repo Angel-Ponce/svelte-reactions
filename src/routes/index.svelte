@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Test from '$lib/Test.svelte';
+	import Trigger from '$lib/Trigger.svelte';
 </script>
 
-<Test />
+<Trigger />
