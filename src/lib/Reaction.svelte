@@ -1,5 +1,8 @@
 <script lang="ts">
 	import type { SvelteComponent } from 'svelte/internal';
+	import { createEventDispatcher } from 'svelte/internal';
+
+	const dispatch = createEventDispatcher();
 
 	export let reaction: string | typeof SvelteComponent = '🚀';
 	export let quantity = 0;
@@ -19,7 +22,10 @@
 	on:mouseup={() => {
 		toggleClick(false);
 	}}
-	on:click={() => quantity++}
+	on:click={() => {
+		quantity++;
+		dispatch('reactionClicked', { reaction, quantity });
+	}}
 	tabindex="0"
 >
 	<span class={`emoji ${active && 'active'}`}>

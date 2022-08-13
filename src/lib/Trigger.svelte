@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
-	import type { SvelteComponent } from 'svelte/internal';
+	import { onMount, type SvelteComponent } from 'svelte/internal';
 	import { fly } from 'svelte/transition';
+	import { onClickOutside } from './helpers/clickOutside';
 
 	export interface ReactionType {
 		reaction: string | typeof SvelteComponent;
@@ -29,14 +30,33 @@
 	];
 
 	let active = false;
+	let element: HTMLDivElement;
+
+	onMount(() => {
+		if (element) {
+			element.addEventListener('clickOutside', () => {
+				active = false;
+			});
+		}
+	});
 </script>
 
-<div class="trigger" on:click={() => (active = !active)}>
+<div class="trigger" on:click={() => (active = !active)} use:onClickOutside bind:this={element}>
 	<TriggerIcon width={18} />
 	{#if active}
-		<div class={`reactions-container`} transition:fly={{ y: 8, duration: 300 }}>
+		<div
+			class={`reactions-container`}
+			transition:fly={{ y: 8, duration: 300 }}
+			on:click={(e) => e.stopPropagation()}
+		>
 			{#each reactions as reaction, index (index)}
-				<Reaction bind:quantity={reaction.quantity} reaction={reaction.reaction} />
+				<Reaction
+					bind:quantity={reaction.quantity}
+					reaction={reaction.reaction}
+					on:reactionClicked={() => {
+						active = false;
+					}}
+				/>
 			{/each}
 		</div>
 	{/if}
@@ -76,5 +96,6 @@
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 		max-width: 320px;
 		overflow-x: auto;
+		cursor: default;
 	}
 </style>
