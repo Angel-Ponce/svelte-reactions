@@ -3,5 +3,9 @@
 </script>
 
 <div style="">
-	<Trigger />
+	<Trigger
+		on:reaction={(e) => {
+			console.log(e);
+		}}
+	/>
 </div>

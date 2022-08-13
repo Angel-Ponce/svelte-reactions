@@ -14,6 +14,7 @@
 	import TriggerIcon from './TriggerIcon.svelte';
 	import Labels from './Labels.svelte';
 	import { onClickOutside } from './helpers/clickOutside';
+	import { createEventDispatcher } from 'svelte/internal';
 
 	export let reactions: ReactionType[] = [
 		{ reaction: '👍', quantity: 10, clicked: false },
@@ -27,6 +28,12 @@
 
 	let showDropdown = false;
 	let element: HTMLDivElement;
+	const dispatch = createEventDispatcher();
+
+	const handleReaction = (reaction: ReactionType) => {
+		showDropdown = false;
+		dispatch('reaction', { reaction });
+	};
 
 	onMount(() => {
 		if (element) {
@@ -57,7 +64,7 @@
 						bind:clicked={reaction.clicked}
 						reaction={reaction.reaction}
 						on:reactionClicked={() => {
-							showDropdown = false;
+							handleReaction(reaction);
 						}}
 					/>
 				{/each}
