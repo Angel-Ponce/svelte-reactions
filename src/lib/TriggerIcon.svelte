@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let width = 16;
 	let height = width;
 </script>
@@ -34,6 +34,6 @@
 
 <style>
 	.trigger-icon {
-		color: #888888;
+		color: inherit;
 	}
 </style>
