@@ -12,11 +12,19 @@
 	import TriggerIcon from './TriggerIcon.svelte';
 
 	export let reactions: ReactionType[] = [
-		{ reaction: '👍', quantity: 0 },
+		{ reaction: '👍', quantity: 10 },
 		{ reaction: '😂', quantity: 0 },
 		{ reaction: '❤️', quantity: 0 },
 		{ reaction: '😮', quantity: 0 },
 		{ reaction: '😡', quantity: 0 }
+		// { reaction: '🎨', quantity: 0 },
+		// { reaction: '😊', quantity: 0 },
+		// { reaction: '👌', quantity: 0 },
+		// { reaction: '📂', quantity: 0 },
+		// { reaction: '😒', quantity: 0 },
+		// { reaction: '✌️', quantity: 0 },
+		// { reaction: '😅', quantity: 0 },
+		// { reaction: '❤️‍🔥', quantity: 0 }
 	];
 </script>
 
@@ -61,5 +69,7 @@
 		padding: 5px;
 		border-radius: 6px;
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+		max-width: 320px;
+		overflow-x: auto;
 	}
 </style>

@@ -20,11 +20,8 @@
 		toggleClick(false);
 	}}
 >
-	<span class={`emoji ${active ? 'active' : ''}`}>
+	<span class={`emoji ${active && 'active'}`}>
 		{reaction}
-		{#if quantity > 0}
-			{quantity}
-		{/if}
 	</span>
 </div>
 
