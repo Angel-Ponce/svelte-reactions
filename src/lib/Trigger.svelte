@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import { onMount, type SvelteComponent } from 'svelte/internal';
 	import { fly } from 'svelte/transition';
-	import { onClickOutside } from './helpers/clickOutside';
 
 	export interface ReactionType {
 		reaction: string | typeof SvelteComponent;
@@ -14,6 +13,7 @@
 	import Reaction from './Reaction.svelte';
 	import TriggerIcon from './TriggerIcon.svelte';
 	import Labels from './Labels.svelte';
+	import { onClickOutside } from './helpers/clickOutside';
 
 	export let reactions: ReactionType[] = [
 		{ reaction: '👍', quantity: 10, clicked: false },
@@ -25,13 +25,13 @@
 
 	export let showLabels = true;
 
-	let activeDropdown = false;
+	let showDropdown = false;
 	let element: HTMLDivElement;
 
 	onMount(() => {
 		if (element) {
 			element.addEventListener('clickOutside', () => {
-				activeDropdown = false;
+				showDropdown = false;
 			});
 		}
 	});
@@ -40,12 +40,12 @@
 <div class="trigger-container">
 	<div
 		class="trigger"
-		on:click={() => (activeDropdown = !activeDropdown)}
+		on:click={() => (showDropdown = !showDropdown)}
 		use:onClickOutside
 		bind:this={element}
 	>
 		<TriggerIcon width={18} />
-		{#if activeDropdown}
+		{#if showDropdown}
 			<div
 				class={`reactions-container`}
 				transition:fly={{ y: 8, duration: 300 }}
@@ -57,13 +57,14 @@
 						bind:clicked={reaction.clicked}
 						reaction={reaction.reaction}
 						on:reactionClicked={() => {
-							activeDropdown = false;
+							showDropdown = false;
 						}}
 					/>
 				{/each}
 			</div>
 		{/if}
 	</div>
+
 	{#if showLabels}
 		<Labels bind:reactions />
 	{/if}

@@ -8,10 +8,10 @@
 	export let quantity = 0;
 	export let clicked = false;
 
-	let active: boolean = false;
+	let focus: boolean = false;
 
 	const toggleClick = (click: boolean) => {
-		active = click;
+		focus = click;
 	};
 
 	export const handleClick = () => {
@@ -37,7 +37,7 @@
 	on:click={handleClick}
 	tabindex="0"
 >
-	<span class={`emoji ${active && 'active'}`}>
+	<span class={`emoji ${focus && 'focus'}`}>
 		{reaction}
 	</span>
 </div>
@@ -69,7 +69,8 @@
 		color: #888888;
 	}
 
-	.reaction .emoji.active {
+	.reaction .emoji.focus {
 		transform: scale(0.85);
+		transition: 200ms;
 	}
 </style>
