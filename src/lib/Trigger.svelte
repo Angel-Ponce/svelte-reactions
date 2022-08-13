@@ -13,6 +13,7 @@
 <script lang="ts">
 	import Reaction from './Reaction.svelte';
 	import TriggerIcon from './TriggerIcon.svelte';
+	import Labels from './Labels.svelte';
 
 	export let reactions: ReactionType[] = [
 		{ reaction: '👍', quantity: 10, clicked: false },
@@ -26,26 +27,6 @@
 
 	let activeDropdown = false;
 	let element: HTMLDivElement;
-
-	const handleLabelClick = (reactionIndex: number) => {
-		let clickedReaction = reactions[reactionIndex];
-
-		if (clickedReaction) {
-			clickedReaction.clicked = !clickedReaction.clicked;
-			if (clickedReaction.clicked) {
-				clickedReaction.quantity++;
-			} else {
-				clickedReaction.quantity--;
-			}
-		}
-
-		reactions = reactions.map((reaction, index) => {
-			if (index == reactionIndex) {
-				return clickedReaction;
-			}
-			return reaction;
-		});
-	};
 
 	onMount(() => {
 		if (element) {
@@ -84,21 +65,7 @@
 		{/if}
 	</div>
 	{#if showLabels}
-		<div class="labels-container">
-			{#each reactions as reaction, index (index)}
-				{#if reaction.quantity > 0}
-					<div
-						class="label"
-						on:click={() => {
-							handleLabelClick(index);
-						}}
-					>
-						<span>{reaction.reaction}</span>
-						<span>{reaction.quantity}</span>
-					</div>
-				{/if}
-			{/each}
-		</div>
+		<Labels bind:reactions />
 	{/if}
 </div>
 
@@ -144,30 +111,5 @@
 		max-width: 320px;
 		overflow-x: auto;
 		cursor: default;
-	}
-
-	.labels-container {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		flex-wrap: wrap;
-	}
-
-	.label {
-		border: 1px #888888 solid;
-		border-radius: 9999px;
-		padding: 2px 5px 2px 5px;
-		background-color: #faf9f9;
-		color: #888888;
-		cursor: pointer;
-		user-select: none;
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
-			Geneva, Verdana, sans-serif;
-		min-width: max-content;
-		font-size: 0.75rem;
-	}
-
-	.label:hover {
-		background-color: #f0f0f0;
 	}
 </style>
