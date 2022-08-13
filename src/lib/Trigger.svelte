@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
 	import type { SvelteComponent } from 'svelte/internal';
+	import { fly } from 'svelte/transition';
 
 	export interface ReactionType {
 		reaction: string | typeof SvelteComponent;
@@ -26,15 +27,19 @@
 		// { reaction: '😅', quantity: 0 },
 		// { reaction: '❤️‍🔥', quantity: 0 }
 	];
+
+	let active = false;
 </script>
 
-<div class="trigger" tabindex="0">
+<div class="trigger" on:click={() => (active = !active)}>
 	<TriggerIcon width={18} />
-	<div class="reactions-container">
-		{#each reactions as reaction, index (index)}
-			<Reaction bind:quantity={reaction.quantity} reaction={reaction.reaction} />
-		{/each}
-	</div>
+	{#if active}
+		<div class={`reactions-container`} transition:fly={{ y: 8, duration: 300 }}>
+			{#each reactions as reaction, index (index)}
+				<Reaction bind:quantity={reaction.quantity} reaction={reaction.reaction} />
+			{/each}
+		</div>
+	{/if}
 </div>
 
 <style>

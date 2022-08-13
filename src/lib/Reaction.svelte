@@ -19,6 +19,8 @@
 	on:mouseup={() => {
 		toggleClick(false);
 	}}
+	on:click={() => quantity++}
+	tabindex="0"
 >
 	<span class={`emoji ${active && 'active'}`}>
 		{reaction}
