@@ -6,6 +6,7 @@
 	export interface ReactionType {
 		reaction: string | typeof SvelteComponent;
 		quantity: number;
+		clicked: boolean;
 	}
 </script>
 
@@ -14,39 +15,56 @@
 	import TriggerIcon from './TriggerIcon.svelte';
 
 	export let reactions: ReactionType[] = [
-		{ reaction: '👍', quantity: 10 },
-		{ reaction: '😂', quantity: 0 },
-		{ reaction: '❤️', quantity: 0 },
-		{ reaction: '😮', quantity: 0 },
-		{ reaction: '😡', quantity: 0 }
-		// { reaction: '🎨', quantity: 0 },
-		// { reaction: '😊', quantity: 0 },
-		// { reaction: '👌', quantity: 0 },
-		// { reaction: '📂', quantity: 0 },
-		// { reaction: '😒', quantity: 0 },
-		// { reaction: '✌️', quantity: 0 },
-		// { reaction: '😅', quantity: 0 },
-		// { reaction: '❤️‍🔥', quantity: 0 }
+		{ reaction: '👍', quantity: 10, clicked: false },
+		{ reaction: '😂', quantity: 0, clicked: false },
+		{ reaction: '❤️', quantity: 0, clicked: false },
+		{ reaction: '😮', quantity: 0, clicked: false },
+		{ reaction: '😡', quantity: 0, clicked: false }
 	];
 
 	export let showLabels = true;
 
-	let active = false;
+	let activeDropdown = false;
 	let element: HTMLDivElement;
+
+	const handleLabelClick = (reactionIndex: number) => {
+		let clickedReaction = reactions[reactionIndex];
+
+		if (clickedReaction) {
+			clickedReaction.clicked = !clickedReaction.clicked;
+			if (clickedReaction.clicked) {
+				clickedReaction.quantity++;
+			} else {
+				clickedReaction.quantity--;
+			}
+		}
+
+		reactions = reactions.map((reaction, index) => {
+			if (index == reactionIndex) {
+				return clickedReaction;
+			}
+			return reaction;
+		});
+	};
 
 	onMount(() => {
 		if (element) {
 			element.addEventListener('clickOutside', () => {
-				active = false;
+				activeDropdown = false;
 			});
 		}
 	});
 </script>
 
 <div class="trigger-container">
-	<div class="trigger" on:click={() => (active = !active)} use:onClickOutside bind:this={element}>
+	<div
+		class="trigger"
+		on:click={() => (activeDropdown = !activeDropdown)}
+		use:onClickOutside
+		bind:this={element}
+	>
 		<TriggerIcon width={18} />
-		{#if active}
+		{#if activeDropdown}
 			<div
 				class={`reactions-container`}
 				transition:fly={{ y: 8, duration: 300 }}
@@ -55,9 +73,10 @@
 				{#each reactions as reaction, index (index)}
 					<Reaction
 						bind:quantity={reaction.quantity}
+						bind:clicked={reaction.clicked}
 						reaction={reaction.reaction}
 						on:reactionClicked={() => {
-							active = false;
+							activeDropdown = false;
 						}}
 					/>
 				{/each}
@@ -68,7 +87,12 @@
 		<div class="labels-container">
 			{#each reactions as reaction, index (index)}
 				{#if reaction.quantity > 0}
-					<div class="label">
+					<div
+						class="label"
+						on:click={() => {
+							handleLabelClick(index);
+						}}
+					>
 						<span>{reaction.reaction}</span>
 						<span>{reaction.quantity}</span>
 					</div>
@@ -141,5 +165,9 @@
 			Geneva, Verdana, sans-serif;
 		min-width: max-content;
 		font-size: 0.75rem;
+	}
+
+	.label:hover {
+		background-color: #f0f0f0;
 	}
 </style>

@@ -6,26 +6,35 @@
 
 	export let reaction: string | typeof SvelteComponent = '🚀';
 	export let quantity = 0;
+	export let clicked = false;
 
 	let active: boolean = false;
 
 	const toggleClick = (click: boolean) => {
 		active = click;
 	};
+
+	export const handleClick = () => {
+		clicked = !clicked;
+		if (clicked) {
+			quantity++;
+		} else {
+			quantity--;
+		}
+		dispatch('reactionClicked', { reaction, quantity });
+	};
 </script>
 
 <div
 	class="reaction"
+	style={`--bg-color: ${clicked ? '#f0f0f0' : '#ffffff'}`}
 	on:mousedown={() => {
 		toggleClick(true);
 	}}
 	on:mouseup={() => {
 		toggleClick(false);
 	}}
-	on:click={() => {
-		quantity++;
-		dispatch('reactionClicked', { reaction, quantity });
-	}}
+	on:click={handleClick}
 	tabindex="0"
 >
 	<span class={`emoji ${active && 'active'}`}>
@@ -42,7 +51,7 @@
 		width: fit-content;
 		height: auto;
 		border-radius: 4px;
-		background-color: #ffffff;
+		background-color: var(--bg-color);
 		cursor: pointer;
 		transition-duration: 500ms;
 		user-select: none;
