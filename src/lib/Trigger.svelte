@@ -29,6 +29,8 @@
 		// { reaction: '❤️‍🔥', quantity: 0 }
 	];
 
+	export let showLabels = true;
+
 	let active = false;
 	let element: HTMLDivElement;
 
@@ -41,30 +43,51 @@
 	});
 </script>
 
-<div class="trigger" on:click={() => (active = !active)} use:onClickOutside bind:this={element}>
-	<TriggerIcon width={18} />
-	{#if active}
-		<div
-			class={`reactions-container`}
-			transition:fly={{ y: 8, duration: 300 }}
-			on:click={(e) => e.stopPropagation()}
-		>
+<div class="trigger-container">
+	<div class="trigger" on:click={() => (active = !active)} use:onClickOutside bind:this={element}>
+		<TriggerIcon width={18} />
+		{#if active}
+			<div
+				class={`reactions-container`}
+				transition:fly={{ y: 8, duration: 300 }}
+				on:click={(e) => e.stopPropagation()}
+			>
+				{#each reactions as reaction, index (index)}
+					<Reaction
+						bind:quantity={reaction.quantity}
+						reaction={reaction.reaction}
+						on:reactionClicked={() => {
+							active = false;
+						}}
+					/>
+				{/each}
+			</div>
+		{/if}
+	</div>
+	{#if showLabels}
+		<div class="labels-container">
 			{#each reactions as reaction, index (index)}
-				<Reaction
-					bind:quantity={reaction.quantity}
-					reaction={reaction.reaction}
-					on:reactionClicked={() => {
-						active = false;
-					}}
-				/>
+				{#if reaction.quantity > 0}
+					<div class="label">
+						<span>{reaction.reaction}</span>
+						<span>{reaction.quantity}</span>
+					</div>
+				{/if}
 			{/each}
 		</div>
 	{/if}
 </div>
 
 <style>
-	.trigger {
+	.trigger-container {
 		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
+
+	.trigger {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -97,5 +120,26 @@
 		max-width: 320px;
 		overflow-x: auto;
 		cursor: default;
+	}
+
+	.labels-container {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
+
+	.label {
+		border: 1px #888888 solid;
+		border-radius: 9999px;
+		padding: 2px 5px 2px 5px;
+		background-color: #faf9f9;
+		color: #888888;
+		cursor: pointer;
+		user-select: none;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
+			Geneva, Verdana, sans-serif;
+		min-width: max-content;
+		font-size: 0.75rem;
 	}
 </style>

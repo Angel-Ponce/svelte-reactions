@@ -62,7 +62,5 @@
 
 	.reaction .emoji.active {
 		transform: scale(0.85);
-		transition-property: transform;
-		transition-duration: 200ms;
 	}
 </style>
