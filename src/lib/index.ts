@@ -1,3 +1,4 @@
 import Reaction from './Reaction.svelte';
+import Trigger from './Trigger.svelte';
 
-export { Reaction as Test };
+export { Reaction, Trigger };

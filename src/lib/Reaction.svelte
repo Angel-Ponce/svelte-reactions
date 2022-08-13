@@ -1,5 +1,7 @@
 <script lang="ts">
-	export let reaction = '🚀';
+	import type { SvelteComponent } from 'svelte/internal';
+
+	export let reaction: string | typeof SvelteComponent = '🚀';
 	export let quantity = 0;
 
 	let active: boolean = false;
@@ -54,7 +56,7 @@
 	}
 
 	.reaction .emoji.active {
-		transform: scale(0.92);
+		transform: scale(0.85);
 		transition-property: transform;
 		transition-duration: 200ms;
 	}
