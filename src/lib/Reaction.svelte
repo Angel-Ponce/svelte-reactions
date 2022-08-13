@@ -7,6 +7,8 @@
 	export let reaction: string | typeof SvelteComponent = '🚀';
 	export let quantity = 0;
 	export let clicked = false;
+	//Define the position in the array of reactions
+	export let position: number;
 
 	let focus: boolean = false;
 
@@ -27,7 +29,7 @@
 
 <div
 	class="reaction"
-	style={`--bg-color: ${clicked ? '#f0f0f0' : '#ffffff'}`}
+	style={`--bg-color: ${clicked ? '#f0f0f0' : '#ffffff'}; --delay: ${(position + 1) * 100}ms;`}
 	on:mousedown={() => {
 		toggleClick(true);
 	}}
@@ -56,6 +58,8 @@
 		transition-duration: 500ms;
 		user-select: none;
 		padding: 3px;
+		animation-name: appear;
+		animation-duration: var(--delay);
 	}
 
 	.reaction:hover {
@@ -72,5 +76,16 @@
 	.reaction .emoji.focus {
 		transform: scale(0.85);
 		transition: 200ms;
+	}
+
+	@keyframes appear {
+		from {
+			transform: translateY(15px);
+			opacity: 60%;
+		}
+		to {
+			transform: translateY(0px);
+			opacity: 100%;
+		}
 	}
 </style>

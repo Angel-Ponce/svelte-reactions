@@ -62,7 +62,8 @@
 					<Reaction
 						bind:quantity={reaction.quantity}
 						bind:clicked={reaction.clicked}
-						reaction={reaction.reaction}
+						bind:reaction={reaction.reaction}
+						position={index}
 						on:reactionClicked={() => {
 							handleReaction(reaction);
 						}}
@@ -124,5 +125,6 @@
 		max-width: 320px;
 		overflow-x: auto;
 		cursor: default;
+		overflow-y: hidden;
 	}
 </style>

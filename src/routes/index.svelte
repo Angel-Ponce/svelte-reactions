@@ -5,7 +5,7 @@
 <div style="">
 	<Trigger
 		on:reaction={(e) => {
-			console.log(e);
+			// Do stuff
 		}}
 	/>
 </div>
