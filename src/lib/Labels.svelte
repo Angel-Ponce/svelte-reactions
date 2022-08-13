@@ -1,7 +1,10 @@
 <script lang="ts">
 	import type { ReactionType } from './Trigger.svelte';
+	import { createEventDispatcher } from 'svelte/internal';
 
 	export let reactions: ReactionType[];
+
+	const dispatch = createEventDispatcher();
 
 	const handleLabelClick = (reactionIndex: number) => {
 		let clickedReaction = reactions[reactionIndex];
@@ -13,14 +16,16 @@
 			} else {
 				clickedReaction.quantity--;
 			}
-		}
 
-		reactions = reactions.map((reaction, index) => {
-			if (index == reactionIndex) {
-				return clickedReaction;
-			}
-			return reaction;
-		});
+			reactions = reactions.map((reaction, index) => {
+				if (index == reactionIndex) {
+					return clickedReaction;
+				}
+				return reaction;
+			});
+
+			dispatch('labelClicked', { reaction: clickedReaction });
+		}
 	};
 </script>
 

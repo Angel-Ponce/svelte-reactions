@@ -73,7 +73,12 @@
 	</div>
 
 	{#if showLabels}
-		<Labels bind:reactions />
+		<Labels
+			bind:reactions
+			on:labelClicked={(e) => {
+				dispatch('reaction', { ...e.detail });
+			}}
+		/>
 	{/if}
 </div>
 
