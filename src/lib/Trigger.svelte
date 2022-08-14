@@ -127,5 +127,6 @@
 		cursor: default;
 		overflow-y: hidden;
 		background-color: white;
+		z-index: 9999;
 	}
 </style>
