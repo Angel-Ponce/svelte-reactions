@@ -1,12 +1,14 @@
 <script lang="ts">
-	import type { SvelteComponent } from 'svelte/internal';
 	import { createEventDispatcher } from 'svelte/internal';
+	import type { ReactionType } from './types';
 
 	const dispatch = createEventDispatcher();
 
-	export let reaction: string | typeof SvelteComponent = '🚀';
-	export let quantity = 0;
-	export let clicked = false;
+	export let reaction: ReactionType = {
+		reaction: '✌️',
+		quantity: 0,
+		clicked: false
+	};
 	//Define the position in the array of reactions
 	export let position: number;
 
@@ -17,19 +19,22 @@
 	};
 
 	export const handleClick = () => {
-		clicked = !clicked;
-		if (clicked) {
-			quantity++;
+		reaction = { ...reaction, clicked: !reaction.clicked };
+		if (reaction.clicked) {
+			reaction = { ...reaction, quantity: reaction.quantity + 1 };
 		} else {
-			quantity--;
+			reaction = { ...reaction, quantity: reaction.quantity - 1 };
 		}
-		dispatch('reactionClicked', { reaction, quantity });
+
+		dispatch('reactionClicked', { reaction });
 	};
 </script>
 
 <div
 	class="reaction"
-	style={`--bg-color: ${clicked ? '#f0f0f0' : '#ffffff'}; --delay: ${(position + 1) * 100}ms;`}
+	style={`--bg-color: ${reaction.clicked ? '#f0f0f0' : '#ffffff'}; --delay: ${
+		(position + 1) * 100
+	}ms;`}
 	on:mousedown={() => {
 		toggleClick(true);
 	}}
@@ -40,7 +45,7 @@
 	tabindex="0"
 >
 	<span class={`emoji ${focus && 'focus'}`}>
-		{reaction}
+		{reaction.reaction}
 	</span>
 </div>
 

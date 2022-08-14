@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ReactionType } from './Trigger.svelte';
+	import type { ReactionType } from './types';
 	import { createEventDispatcher } from 'svelte/internal';
 
 	export let reactions: ReactionType[];

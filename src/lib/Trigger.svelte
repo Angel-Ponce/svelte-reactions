@@ -1,20 +1,12 @@
-<script context="module" lang="ts">
-	import { onMount, type SvelteComponent } from 'svelte/internal';
-	import { fly } from 'svelte/transition';
-
-	export interface ReactionType {
-		reaction: string | typeof SvelteComponent;
-		quantity: number;
-		clicked: boolean;
-	}
-</script>
-
 <script lang="ts">
+	import { onMount } from 'svelte/internal';
+	import { fly } from 'svelte/transition';
 	import Reaction from './Reaction.svelte';
 	import TriggerIcon from './TriggerIcon.svelte';
 	import Labels from './Labels.svelte';
 	import { onClickOutside } from './helpers/clickOutside';
 	import { createEventDispatcher } from 'svelte/internal';
+	import type { Placement, ReactionType } from './types';
 
 	export let reactions: ReactionType[] = [
 		{ reaction: '👍', quantity: 0, clicked: false },
@@ -25,6 +17,8 @@
 	];
 
 	export let showLabels = true;
+
+	export let position: Placement = 'bottom-left';
 
 	let showDropdown = false;
 	let element: HTMLDivElement;
@@ -60,9 +54,7 @@
 			>
 				{#each reactions as reaction, index (index)}
 					<Reaction
-						bind:quantity={reaction.quantity}
-						bind:clicked={reaction.clicked}
-						bind:reaction={reaction.reaction}
+						bind:reaction
 						position={index}
 						on:reactionClicked={() => {
 							handleReaction(reaction);
