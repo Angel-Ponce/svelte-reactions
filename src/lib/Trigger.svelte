@@ -117,7 +117,7 @@
 		left: 0%;
 		display: flex;
 		align-items: center;
-		gap: 2px;
+		gap: 3px;
 		margin: 5px 0px 5px 0px;
 		padding: 5px;
 		border-radius: 6px;

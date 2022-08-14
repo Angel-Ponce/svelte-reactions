@@ -57,7 +57,7 @@
 		cursor: pointer;
 		transition-duration: 500ms;
 		user-select: none;
-		padding: 3px;
+		padding: 5px;
 		animation-name: appear;
 		animation-duration: var(--delay);
 	}
@@ -67,7 +67,7 @@
 	}
 
 	.reaction .emoji {
-		font-size: 1rem;
+		font-size: 1.2rem;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
 			Geneva, Verdana, sans-serif;
 		color: #888888;
