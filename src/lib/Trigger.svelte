@@ -17,7 +17,7 @@
 	import { createEventDispatcher } from 'svelte/internal';
 
 	export let reactions: ReactionType[] = [
-		{ reaction: '👍', quantity: 10, clicked: false },
+		{ reaction: '👍', quantity: 0, clicked: false },
 		{ reaction: '😂', quantity: 0, clicked: false },
 		{ reaction: '❤️', quantity: 0, clicked: false },
 		{ reaction: '😮', quantity: 0, clicked: false },
@@ -126,5 +126,6 @@
 		overflow-x: auto;
 		cursor: default;
 		overflow-y: hidden;
+		background-color: white;
 	}
 </style>
