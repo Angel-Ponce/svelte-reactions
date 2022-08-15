@@ -7,6 +7,7 @@
 	import { onClickOutside } from './helpers/clickOutside';
 	import { createEventDispatcher } from 'svelte/internal';
 	import type { Placement, ReactionType } from './types';
+	import { placement } from './helpers/placement';
 
 	export let reactions: ReactionType[] = [
 		{ reaction: '👍', quantity: 0, clicked: false },
@@ -23,6 +24,7 @@
 	let showDropdown = false;
 	let element: HTMLDivElement;
 	const dispatch = createEventDispatcher();
+	let insetsPosition = placement(position);
 
 	const handleReaction = (reaction: ReactionType) => {
 		showDropdown = false;
@@ -51,6 +53,7 @@
 				class={`reactions-container`}
 				transition:fly={{ y: 8, duration: 300 }}
 				on:click={(e) => e.stopPropagation()}
+				style={`--top: ${insetsPosition.top}; --right: ${insetsPosition.right}; --bottom: ${insetsPosition.bottom}; --left: ${insetsPosition.left};`}
 			>
 				{#each reactions as reaction, index (index)}
 					<Reaction
@@ -105,9 +108,11 @@
 
 	.reactions-container {
 		position: absolute;
-		top: 100%;
-		left: 0%;
 		display: flex;
+		top: var(--top);
+		right: var(--right);
+		bottom: var(--bottom);
+		left: var(--left);
 		align-items: center;
 		gap: 3px;
 		margin: 5px 0px 5px 0px;

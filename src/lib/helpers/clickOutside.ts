@@ -1,4 +1,4 @@
-export function onClickOutside(node: HTMLElement) {
+const onClickOutside = (node: HTMLElement) => {
 	const handleClick = (event: Event) => {
 		if (node && !node.contains(event.target as Node) && !event.defaultPrevented) {
 			node.dispatchEvent(new CustomEvent('clickOutside'));
@@ -12,4 +12,6 @@ export function onClickOutside(node: HTMLElement) {
 			document.removeEventListener('click', handleClick, true);
 		}
 	};
-}
+};
+
+export { onClickOutside };
