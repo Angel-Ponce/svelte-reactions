@@ -24,7 +24,7 @@
 	let showDropdown = false;
 	let element: HTMLDivElement;
 	const dispatch = createEventDispatcher();
-	let insetsPosition = placement(position);
+	$: insetsPosition = placement(position);
 
 	const handleReaction = (reaction: ReactionType) => {
 		showDropdown = false;

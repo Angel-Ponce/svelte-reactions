@@ -9,6 +9,7 @@
 		quantity: 0,
 		clicked: false
 	};
+
 	//Define the position in the array of reactions
 	export let position: number;
 
