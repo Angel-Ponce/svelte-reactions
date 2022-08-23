@@ -37,9 +37,9 @@ const placement = (position: Placement) => {
 	}
 
 	return {
-		top: 'none',
+		top: '100% ',
 		right: 'none',
-		bottom: '0% ',
+		bottom: 'none',
 		left: '0% '
 	};
 };
