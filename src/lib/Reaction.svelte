@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte/internal';
+	import { randomId } from './helpers/randomId';
 	import type { ReactionType } from './types';
 
 	const dispatch = createEventDispatcher();
 
 	export let reaction: ReactionType = {
+		id: randomId(),
 		reaction: '✌️',
 		quantity: 0,
 		clicked: false

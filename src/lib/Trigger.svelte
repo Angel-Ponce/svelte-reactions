@@ -8,13 +8,14 @@
 	import { createEventDispatcher } from 'svelte/internal';
 	import type { Placement, ReactionType } from './types';
 	import { placement } from './helpers/placement';
+	import { randomId } from './helpers/randomId';
 
 	export let reactions: ReactionType[] = [
-		{ reaction: '👍', quantity: 0, clicked: false },
-		{ reaction: '😂', quantity: 0, clicked: false },
-		{ reaction: '❤️', quantity: 0, clicked: false },
-		{ reaction: '😮', quantity: 0, clicked: false },
-		{ reaction: '😡', quantity: 0, clicked: false }
+		{ id: randomId(), reaction: '👍', quantity: 0, clicked: false },
+		{ id: randomId(), reaction: '😂', quantity: 0, clicked: false },
+		{ id: randomId(), reaction: '❤️', quantity: 0, clicked: false },
+		{ id: randomId(), reaction: '😮', quantity: 0, clicked: false },
+		{ id: randomId(), reaction: '😡', quantity: 0, clicked: false }
 	];
 
 	export let showLabels = true;
@@ -59,7 +60,7 @@
 				on:click={(e) => e.stopPropagation()}
 				style={`--top: ${insetsPosition.top}; --right: ${insetsPosition.right}; --bottom: ${insetsPosition.bottom}; --left: ${insetsPosition.left};`}
 			>
-				{#each reactions as reaction, index (index)}
+				{#each reactions as reaction, index (reaction.id)}
 					<Reaction
 						bind:reaction
 						position={index}
