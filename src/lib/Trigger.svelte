@@ -18,6 +18,8 @@
 		{ id: randomId(), reaction: '😡', quantity: 0, clicked: false }
 	];
 
+	reactions = reactions.sort((a, b) => b.quantity - a.quantity);
+
 	export let showLabels = true;
 
 	export let position: Placement = 'bottom-left';
@@ -29,6 +31,7 @@
 
 	const handleReaction = (reaction: ReactionType) => {
 		showDropdown = false;
+		reactions = reactions.sort((a, b) => b.quantity - a.quantity);
 		dispatch('reaction', { reaction });
 	};
 
@@ -77,6 +80,7 @@
 		<Labels
 			bind:reactions
 			on:labelClicked={(e) => {
+				reactions = reactions.sort((a, b) => b.quantity - a.quantity);
 				dispatch('reaction', { ...e.detail });
 			}}
 		/>

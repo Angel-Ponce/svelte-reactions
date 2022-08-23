@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { randomId } from '$lib/helpers/randomId';
+
 	import Trigger from '$lib/Trigger.svelte';
 </script>
 
@@ -10,6 +12,13 @@
 		on:reaction={(e) => {
 			// Do stuff
 		}}
+		reactions={[
+			{ id: randomId(), reaction: '👍', quantity: 127, clicked: false },
+			{ id: randomId(), reaction: '😂', quantity: 155, clicked: false },
+			{ id: randomId(), reaction: '❤️', quantity: 138, clicked: false },
+			{ id: randomId(), reaction: '😮', quantity: 12, clicked: false },
+			{ id: randomId(), reaction: '😡', quantity: 12, clicked: false }
+		]}
 	/>
 	<Trigger
 		position="bottom-left"
