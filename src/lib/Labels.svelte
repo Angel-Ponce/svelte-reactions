@@ -30,7 +30,7 @@
 </script>
 
 <div class="labels-container">
-	{#each reactions as reaction, index (reaction.id)}
+	{#each reactions as reaction, index}
 		{#if reaction.quantity > 0}
 			<div
 				class="label"

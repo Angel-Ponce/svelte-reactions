@@ -60,7 +60,7 @@
 				on:click={(e) => e.stopPropagation()}
 				style={`--top: ${insetsPosition.top}; --right: ${insetsPosition.right}; --bottom: ${insetsPosition.bottom}; --left: ${insetsPosition.left};`}
 			>
-				{#each reactions as reaction, index (reaction.id)}
+				{#each reactions as reaction, index}
 					<Reaction
 						bind:reaction
 						position={index}
