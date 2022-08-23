@@ -42,12 +42,16 @@
 
 <div class="trigger-container">
 	<div
-		class="trigger"
+		class={`${!$$slots.default && 'trigger'}`}
 		on:click={() => (showDropdown = !showDropdown)}
 		use:onClickOutside
 		bind:this={element}
 	>
-		<TriggerIcon width={18} />
+		{#if $$slots.default}
+			<slot />
+		{:else}
+			<TriggerIcon width={18} />
+		{/if}
 		{#if showDropdown}
 			<div
 				class={`reactions-container`}
@@ -115,7 +119,7 @@
 		left: var(--left);
 		align-items: center;
 		gap: 3px;
-		margin: 5px 0px 5px 0px;
+		margin: 5px 0px 0px 0px;
 		padding: 5px;
 		border-radius: 6px;
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
