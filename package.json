@@ -1,7 +1,7 @@
 {
 	"name": "svelte-reactions",
 	"description": "Easy to use emoji reactions for your app.",
-	"version": "2.1.5",
+	"version": "2.1.6",
 	"keywords": [
 		"reactions",
 		"svelte",
@@ -50,5 +50,5 @@
 	"bugs": {
 		"url": "https://github.com/Angel-Ponce/svelte-reactions/issues"
 	},
-	"homepage": "https://svelte.dev/repl/c0a37c14addc4f20b08692dc32863385?version=3.49.0"
+	"homepage": "https://svelte.dev/repl/ca9025e2d4084b6fa6040eb61fafe643?version=3.49.0"
 }
