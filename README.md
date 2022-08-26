@@ -1,38 +1,42 @@
-# create-svelte
+<h1 align="center">Svelte Reactions 🙂</h1>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<p align="center" style="font-size: 1.2rem">
+  A siimple and pretty component to add reactions in your application
+</p>
 
-## Creating a project
+<div align="center">
+  <a href="https://svelte.dev/repl/ca9025e2d4084b6fa6040eb61fafe643?version=3.49.0">
+    <b style="font-size: 2rem">REPL</b>
+  </a>
+</div>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<hr />
+
+<div align="center">
+  <img
+    src="https://img.shields.io/github/stars/Angel-Ponce/svelte-reactions"
+    alt="Stars"
+  />
+  <img
+    src="https://img.shields.io/github/forks/Angel-Ponce/svelte-reactions"
+    alt="Forks"
+  />
+  <img
+    src="https://img.shields.io/github/issues/Angel-Ponce/svelte-reactions"
+    alt="Issues"
+  />
+</div>
+
+## 🚀 Install
+
+Using npm
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+  npm i svelte-reactions
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Or using yarn
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+  yarn install svelte-reactions
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
