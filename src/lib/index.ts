@@ -1,8 +1,8 @@
 import Trigger from './Trigger.svelte';
+import Like from './custom/Like.svelte';
+import Haha from './custom/Haha.svelte';
+import Heart from './custom/Heart.svelte';
+import Wow from './custom/Wow.svelte';
 import Angry from './custom/Angry.svelte';
-import Confuse from './custom/Confuse.svelte';
-import Laugh from './custom/Laugh.svelte';
-import Lol from './custom/Lol.svelte';
-import Scare from './custom/Scare.svelte';
 
-export { Trigger, Angry, Confuse, Laugh, Lol, Scare };
+export { Trigger, Like, Haha, Heart, Wow, Angry };
