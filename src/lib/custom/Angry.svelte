@@ -1,5 +1,5 @@
 <script lang="ts">
-	import angry from '$lib/assets/angry.gif';
+	import angry from '../assets/angry.gif';
 </script>
 
 <img src={angry} alt="angry.gif" width="25px" height="auto" />

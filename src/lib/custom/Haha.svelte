@@ -1,5 +1,5 @@
 <script lang="ts">
-	import haha from '$lib/assets/haha.gif';
+	import haha from '../assets/haha.gif';
 </script>
 
 <img src={haha} alt="haha.gif" width="25px" height="auto" />
