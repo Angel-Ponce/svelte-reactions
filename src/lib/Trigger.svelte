@@ -18,7 +18,7 @@
 		{ id: randomId(), reaction: '😡', quantity: 0, clicked: false }
 	];
 
-	reactions = reactions.sort((a, b) => b.quantity - a.quantity);
+	$: sortedReactions = [...reactions].sort((a, b) => b.quantity - a.quantity);
 
 	export let showLabels = true;
 
@@ -31,7 +31,6 @@
 
 	const handleReaction = (reaction: ReactionType) => {
 		showDropdown = false;
-		reactions = reactions.sort((a, b) => b.quantity - a.quantity);
 		dispatch('reaction', { reaction });
 	};
 
@@ -78,9 +77,8 @@
 
 	{#if showLabels}
 		<Labels
-			bind:reactions
+			bind:reactions={sortedReactions}
 			on:labelClicked={(e) => {
-				reactions = reactions.sort((a, b) => b.quantity - a.quantity);
 				dispatch('reaction', { ...e.detail });
 			}}
 		/>
