@@ -72,14 +72,14 @@
 		user-select: none;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
 			Geneva, Verdana, sans-serif;
-		font-size: 1rem;
+		font-size: 0.8rem;
 		max-height: 25px;
 		overflow: hidden;
 	}
 
 	.label .label-component {
 		display: flex;
-		justify-items: center;
+		justify-content: center;
 		align-items: center;
 		width: auto;
 		height: auto;
