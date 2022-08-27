@@ -48,7 +48,11 @@
 	tabindex="0"
 >
 	<span class={`emoji ${focus && 'focus'}`}>
-		{reaction.reaction}
+		{#if typeof reaction.reaction == 'string'}
+			{reaction.reaction}
+		{:else}
+			<svelte:component this={reaction.reaction} />
+		{/if}
 	</span>
 </div>
 
@@ -59,7 +63,6 @@
 		align-items: center;
 		gap: 2px;
 		width: fit-content;
-		height: auto;
 		border-radius: 4px;
 		background-color: var(--bg-color);
 		cursor: pointer;
@@ -79,6 +82,10 @@
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
 			Geneva, Verdana, sans-serif;
 		color: #888888;
+		max-width: 35px;
+		max-height: 35px;
+		overflow: hidden;
+		aspect-ratio: 1 / 1;
 	}
 
 	.reaction .emoji.focus {

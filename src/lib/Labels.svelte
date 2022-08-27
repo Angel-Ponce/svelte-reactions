@@ -38,8 +38,14 @@
 					handleLabelClick(index);
 				}}
 			>
-				<span>{reaction.reaction}</span>
-				<span>{reaction.quantity}</span>
+				{#if typeof reaction.reaction == 'string'}
+					<div>{reaction.reaction}</div>
+				{:else}
+					<div class="label-component">
+						<svelte:component this={reaction.reaction} />
+					</div>
+				{/if}
+				<div>{reaction.quantity}</div>
 			</div>
 		{/if}
 	{/each}
@@ -54,6 +60,9 @@
 	}
 
 	.label {
+		display: flex;
+		align-items: center;
+		gap: 5px;
 		border: 1px #888888 solid;
 		border-radius: 9999px;
 		padding: 2px 5px 2px 5px;
@@ -63,8 +72,20 @@
 		user-select: none;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
 			Geneva, Verdana, sans-serif;
-		min-width: max-content;
-		font-size: 0.75rem;
+		font-size: 1rem;
+		max-height: 25px;
+		overflow: hidden;
+	}
+
+	.label .label-component {
+		display: flex;
+		justify-items: center;
+		align-items: center;
+		width: auto;
+		height: auto;
+		max-width: 25px;
+		max-height: 25px;
+		transform: scale(0.75);
 	}
 
 	.label:hover {

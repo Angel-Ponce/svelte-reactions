@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { randomId } from '$lib/helpers/randomId';
-
-	import Trigger from '$lib/Trigger.svelte';
+	import { Trigger, Angry, Confuse, Laugh, Lol, Scare } from '$lib';
 </script>
 
 <div
@@ -12,19 +11,19 @@
 		on:reaction={(e) => {
 			// Do stuff
 		}}
-		reactions={[
-			{ id: randomId(), reaction: '👍', quantity: 127, clicked: false },
-			{ id: randomId(), reaction: '😂', quantity: 155, clicked: false },
-			{ id: randomId(), reaction: '❤️', quantity: 138, clicked: false },
-			{ id: randomId(), reaction: '😮', quantity: 12, clicked: false },
-			{ id: randomId(), reaction: '😡', quantity: 12, clicked: false }
-		]}
 	/>
 	<Trigger
 		position="bottom-left"
 		on:reaction={(e) => {
 			// Do stuff
 		}}
+		reactions={[
+			{ id: randomId(), reaction: Angry, quantity: 127, clicked: false },
+			{ id: randomId(), reaction: Confuse, quantity: 155, clicked: false },
+			{ id: randomId(), reaction: Laugh, quantity: 138, clicked: false },
+			{ id: randomId(), reaction: Lol, quantity: 12, clicked: false },
+			{ id: randomId(), reaction: Scare, quantity: 12, clicked: false }
+		]}
 	>
 		<button>Im a custom trigger</button>
 	</Trigger>
