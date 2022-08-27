@@ -1,1 +1,5 @@
-<img src="/heart.gif" alt="heart.gif" width="25px" height="auto" />
+<script lang="ts">
+	import heart from '$lib/assets/heart.gif';
+</script>
+
+<img src={heart} alt="heart.gif" width="25px" height="auto" />
