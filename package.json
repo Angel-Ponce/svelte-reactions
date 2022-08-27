@@ -1,7 +1,7 @@
 {
 	"name": "svelte-reactions",
 	"description": "Easy to use emoji reactions for your app.",
-	"version": "2.2.6",
+	"version": "2.3.6",
 	"keywords": [
 		"reactions",
 		"svelte",
