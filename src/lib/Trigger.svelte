@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './global.css';
 	import { onMount } from 'svelte/internal';
 	import { fly } from 'svelte/transition';
 	import Reaction from './Reaction.svelte';
