@@ -83,6 +83,63 @@ Using ts
 
 ### For more expamples go to the [REPL](https://svelte.dev/repl/ca9025e2d4084b6fa6040eb61fafe643?version=3.49.0)
 
+## 🎨 Theming
+
+We expose some CSS Variables to make more easy customize the colors of the component:
+
+| Variable | Description |
+| :------- | ----------: | 
+| --srTriggerBg | Define the background color of default Trigger component |
+| --srTriggerColor | Define the text color of default Trigger component |
+| --srTriggerHoverBg |  Define the background hover color of default Trigger component |
+| --srTriggerContainerBoxShadow | Define the style box shadow of the reactions container |
+| --srTriggerContainerBg | Define the background color of the reactions container |
+| --srReactionClickedBg | Define the background color of reaction block when this is already clicked |
+| --srReactionNotClickedBg | Define the background color of reaction block when this is not already clicked |
+| --srReactionHoverBg | Define the background hover color of reaction block |
+| --srEmojiColor | Define the text color of reaction |
+| --srLabelBorderColor | Define the border color of default label component |
+| --srLabelBg | Define the background color of default label component |
+| --srLabelColor | Define the text color of default label component |
+| --srLabelHoverBg | Define the background hover color of default label component |
+
+Then you can use this variables to customize the component, for example:
+
+```html
+<!-- CustomReactionComponent.svelte -->
+    
+<script>
+    import { Trigger } from 'svelte-reaction';
+    
+    export let reactions;
+    export let showLabels = true;
+    export let position = 'bottom-left'
+</script>
+    
+<Trigger {reactions} {showLabels} {position} />
+
+<style>
+    :root {
+        --srTriggerBg: red;
+        --srTriggerHoverBg: blue;
+        --srTriggerColor: white;
+     }
+</style>
+```
+
+If you need to be more strict, always you can overwrite the next classes to get the better result:
+
+| Class name | Description |
+| :------- | ----------: | 
+| .trigger-container | Default class for default trigger and labels container |
+| .trigger  | Default class for default trigger element |
+| .reactions-container|  Default class for the reactions contanier (floating component) |
+| .reaction | Default class for the reaction element |
+| .emoji  | Default class for the emoji element |
+| .labels-container | Deault class for the labels container |
+| .label | Default class for the label element |
+| .label-component | Default class for the label element, when the reaction is defined as SvelteComponent insted of String |
+
 ## 📂 API
 
 ### ReactionType attributes
