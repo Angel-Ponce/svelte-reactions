@@ -35,9 +35,9 @@
 
 <div
 	class="reaction"
-	style={`--bg-color: ${reaction.clicked ? '#f0f0f0' : '#ffffff'}; --delay: ${
-		(position + 1) * 100
-	}ms;`}
+	style={`--bg-color: ${
+		reaction.clicked ? 'var(--srReactionClickedBg)' : 'var(--srReactionNotClickedBg)'
+	}; --delay: ${(position + 1) * 100}ms;`}
 	on:mousedown={() => {
 		toggleClick(true);
 	}}
@@ -74,14 +74,14 @@
 	}
 
 	.reaction:hover {
-		background-color: #f0f0f0;
+		background-color: var(--srReactionHoverBg);
 	}
 
 	.reaction .emoji {
 		font-size: 1.2rem;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
 			Geneva, Verdana, sans-serif;
-		color: #888888;
+		color: var(--srEmojiColor);
 		max-width: 35px;
 		max-height: 35px;
 		overflow: hidden;

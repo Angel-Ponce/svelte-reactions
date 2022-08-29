@@ -1,0 +1,22 @@
+:root {
+	/* Trigger and Container */
+
+	--srTriggerBg: #f0f0f0;
+	--srTriggerColor: #888888;
+	--srTriggerHoverBg: #e1e1e1;
+	--srTriggerContainerBoxShadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--srTriggerContainerBg: white;
+
+	/* Reaction and Emoji */
+
+	--srReactionClickedBg: #f0f0f0;
+	--srReactionNotClickedBg: #ffffff;
+	--srReactionHoverBg: #f0f0f0;
+	--srEmojiColor: #888888;
+
+	/* Labels and Container */
+	--srLabelBorderColor: #888888;
+	--srLabelBg: #faf9f9;
+	--srLabelColor: #888888;
+	--srLabelHoverBg: #f0f0f0;
+}

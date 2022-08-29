@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './global.css';
 	import { onMount } from 'svelte/internal';
 	import { fly } from 'svelte/transition';
 	import Reaction from './Reaction.svelte';
@@ -102,15 +103,15 @@
 		height: auto;
 		aspect-ratio: 1 / 1;
 		border-radius: 9999px;
-		background-color: #f0f0f0;
+		background-color: var(--srTriggerBg);
 		padding: 5px;
 		cursor: pointer;
-		color: #888888;
+		color: var(--srTriggerColor);
 		transition-duration: 200ms;
 	}
 
 	.trigger:hover {
-		background-color: #e1e1e1;
+		background-color: var(--srTriggerHoverBg);
 	}
 
 	.reactions-container {
@@ -125,12 +126,12 @@
 		margin: 5px 0px 0px 0px;
 		padding: 5px;
 		border-radius: 6px;
-		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+		box-shadow: var(--srTriggerContainerBoxShadow);
 		max-width: 320px;
 		overflow-x: auto;
 		cursor: default;
 		overflow-y: hidden;
-		background-color: white;
+		background-color: var(--srTriggerContainerBg);
 		z-index: 9999;
 	}
 </style>

@@ -63,11 +63,11 @@
 		display: flex;
 		align-items: center;
 		gap: 5px;
-		border: 1px #888888 solid;
+		border: 1px var(--srLabelBorderColor) solid;
 		border-radius: 9999px;
 		padding: 2px 5px 2px 5px;
-		background-color: #faf9f9;
-		color: #888888;
+		background-color: var(--srLabelBg);
+		color: var(--srLabelColor);
 		cursor: pointer;
 		user-select: none;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
@@ -89,6 +89,6 @@
 	}
 
 	.label:hover {
-		background-color: #f0f0f0;
+		background-color: var(--srLabelHoverBg);
 	}
 </style>
