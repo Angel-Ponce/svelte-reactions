@@ -118,7 +118,7 @@ Then you can use this variables to customize the component, for example:
     
 <Trigger {reactions} {showLabels} {position} />
 
-<style>
+<style global>
     :root {
         --srTriggerBg: red;
         --srTriggerHoverBg: blue;
@@ -139,6 +139,8 @@ If you need to be more strict, always you can overwrite the next classes to get 
 | .labels-container | Deault class for the labels container |
 | .label | Default class for the label element |
 | .label-component | Default class for the label element, when the reaction is defined as SvelteComponent insted of String |
+
+**Remember alway use global styles for overwriting CSS variables and classes**
 
 ## 📂 API
 
