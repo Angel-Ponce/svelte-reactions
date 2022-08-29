@@ -40,3 +40,69 @@ Or using yarn
 ```bash
   yarn install svelte-reactions
 ```
+
+## 🤔 Usage
+
+Using js
+
+```html
+<script>
+	import { Trigger } from 'svelte-reactions';
+
+	const reactions = [
+		{
+			id: '1',
+			reaction: '👍',
+			quantity: 100,
+			clicked: false
+		}
+	];
+</script>
+
+<Trigger bind:reactions />
+```
+
+Using ts
+
+```html
+<script lang="ts">
+	import { Trigger, type ReactionType } from 'svelte-reactions';
+
+	const reactions: ReactionType = [
+		{
+			id: '1',
+			reaction: '👍',
+			quantity: 100,
+			clicked: false
+		}
+	];
+</script>
+
+<Trigger bind:reactions />
+```
+
+### For more expamples go to the [REPL](https://svelte.dev/repl/ca9025e2d4084b6fa6040eb61fafe643?version=3.49.0)
+
+## API
+
+### Reaction interface
+
+| Property | Type | Description |
+| :------- | :--: | ----------: |
+| `ReactionType` | Interface | Define the structure of reaction. | 
+| `ReactionType`.`id` | string | Identifier of a reaction, useful for bind data with your database. |
+| `ReactionType`.`reaction` | string \| SvelteComponent | You can use any `string` for a reaction, however we recomend you to use a string with 1 value of lenght, when you use an `SvelteComponent` as reaction, components like `svg` or `img` or any other, we recomend you to use this sizes: `width` between `20px` and `35px` same as height. |
+| `ReactionType`.`quantity` | number | Define the quantity of reactions, for example 50 likes in some post. |
+| `ReactionType`.`clicked` | boolean | Define if the current user clicked some reaction. | 
+
+### Placment type
+
+`'bottom-left' | 'top-left' | 'bottom-right' | 'top-right'`
+
+### Trigger properties
+
+| Property | Type | Description |
+| :------- | :--: | ----------: |
+| `reactions` | ReactionType[] | Define the set of reactions. |
+| `showLabels` | boolean | Define if the component generate summary of reactionis. | 
+| position | Position | Define the placement of the reactions containers. |
