@@ -83,7 +83,7 @@ Using ts
 
 ### For more expamples go to the [REPL](https://svelte.dev/repl/ca9025e2d4084b6fa6040eb61fafe643?version=3.49.0)
 
-## API
+## 📂 API
 
 ### Reaction interface
 
