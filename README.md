@@ -105,4 +105,4 @@ Using ts
 | :------- | :--: | ----------: |
 | `reactions` | ReactionType[] | Define the set of reactions. |
 | `showLabels` | boolean | Define if the component generate summary of reactionis. | 
-| position | Placement | Define the placement of the reactions containers. |
+| `position` | Placement | Define the placement of the reactions containers. |
