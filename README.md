@@ -47,16 +47,16 @@ Using js
 
 ```html
 <script>
-	import { Trigger } from 'svelte-reactions';
+    import { Trigger } from 'svelte-reactions';
 
-	const reactions = [
-		{
-			id: '1',
-			reaction: '👍',
-			quantity: 100,
-			clicked: false
-		}
-	];
+        const reactions = [
+            {
+                id: '1',
+                reaction: '👍',
+                quantity: 100,
+                clicked: false
+            }
+        ];
 </script>
 
 <Trigger bind:reactions />
@@ -66,16 +66,16 @@ Using ts
 
 ```html
 <script lang="ts">
-	import { Trigger, type ReactionType } from 'svelte-reactions';
+    import { Trigger, type ReactionType } from 'svelte-reactions';
 
-	const reactions: ReactionType = [
-		{
-			id: '1',
-			reaction: '👍',
-			quantity: 100,
-			clicked: false
-		}
-	];
+        const reactions: ReactionType = [
+            {
+                id: '1',
+                reaction: '👍',
+                quantity: 100,
+                clicked: false
+            }
+        ];
 </script>
 
 <Trigger bind:reactions />
@@ -105,4 +105,4 @@ Using ts
 | :------- | :--: | ----------: |
 | `reactions` | ReactionType[] | Define the set of reactions. |
 | `showLabels` | boolean | Define if the component generate summary of reactionis. | 
-| position | Position | Define the placement of the reactions containers. |
+| position | Placement | Define the placement of the reactions containers. |
