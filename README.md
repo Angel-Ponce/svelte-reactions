@@ -47,6 +47,7 @@ Using js
 
 ```html
 <script>
+    import 'svelte-reactions/global.css';
     import { Trigger } from 'svelte-reactions';
 
         const reactions = [
@@ -66,6 +67,7 @@ Using ts
 
 ```html
 <script lang="ts">
+    import 'svelte-reactions/global.css';
     import { Trigger, type ReactionType } from 'svelte-reactions';
 
         const reactions: ReactionType = [
