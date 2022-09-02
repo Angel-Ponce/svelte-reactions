@@ -78,6 +78,9 @@
 	}
 
 	.reaction .emoji {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		font-size: 1.2rem;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
 			Geneva, Verdana, sans-serif;
