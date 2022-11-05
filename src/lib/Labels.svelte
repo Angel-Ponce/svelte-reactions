@@ -4,10 +4,12 @@
 
 	export let reactions: ReactionType[];
 
+	$: sortedReactions = [...reactions].sort((a, b) => b.quantity - a.quantity);
+
 	const dispatch = createEventDispatcher();
 
-	const handleLabelClick = (reactionIndex: number) => {
-		let clickedReaction = reactions[reactionIndex];
+	const handleLabelClick = (reactionId: string) => {
+		let clickedReaction = reactions.find((r) => r.id == reactionId);
 
 		if (clickedReaction) {
 			clickedReaction.clicked = !clickedReaction.clicked;
@@ -17,8 +19,8 @@
 				clickedReaction.quantity--;
 			}
 
-			reactions = reactions.map((reaction, index) => {
-				if (index == reactionIndex) {
+			reactions = reactions.map((reaction) => {
+				if (reaction.id == reactionId && clickedReaction) {
 					return clickedReaction;
 				}
 				return reaction;
@@ -30,12 +32,12 @@
 </script>
 
 <div class="labels-container">
-	{#each reactions as reaction, index}
+	{#each sortedReactions as reaction, index}
 		{#if reaction.quantity > 0}
 			<div
 				class="label"
 				on:click={() => {
-					handleLabelClick(index);
+					handleLabelClick(reaction.id);
 				}}
 			>
 				{#if typeof reaction.reaction == 'string'}

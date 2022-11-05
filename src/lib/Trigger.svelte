@@ -18,8 +18,6 @@
 		{ id: randomId(), reaction: '😡', quantity: 0, clicked: false }
 	];
 
-	$: sortedReactions = [...reactions].sort((a, b) => b.quantity - a.quantity);
-
 	export let showLabels = true;
 
 	export let position: Placement = 'bottom-left';
@@ -66,8 +64,8 @@
 					<Reaction
 						bind:reaction
 						position={index}
-						on:reactionClicked={() => {
-							handleReaction(reaction);
+						on:reactionClicked={(e) => {
+							handleReaction(e.detail.reaction);
 						}}
 					/>
 				{/each}
@@ -77,7 +75,7 @@
 
 	{#if showLabels}
 		<Labels
-			bind:reactions={sortedReactions}
+			bind:reactions
 			on:labelClicked={(e) => {
 				dispatch('reaction', { ...e.detail });
 			}}

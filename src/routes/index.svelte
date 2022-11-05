@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { randomId } from '$lib/helpers/randomId';
+	import '$lib/global.css';
 	import { Trigger } from '$lib';
 </script>
 
@@ -8,16 +8,22 @@
 >
 	<Trigger
 		position="bottom-left"
+		reactions={[
+			{
+				id: '1',
+				clicked: false,
+				quantity: 10,
+				reaction: '😘'
+			},
+			{
+				id: '2',
+				clicked: true,
+				quantity: 12,
+				reaction: '🔥'
+			}
+		]}
 		on:reaction={(e) => {
-			// Do stuff
+			console.log(e.detail);
 		}}
 	/>
-	<Trigger
-		position="bottom-left"
-		on:reaction={(e) => {
-			// Do stuff
-		}}
-	>
-		<button>Im a custom trigger</button>
-	</Trigger>
 </div>

@@ -22,14 +22,16 @@
 	};
 
 	export const handleClick = () => {
-		reaction = { ...reaction, clicked: !reaction.clicked };
-		if (reaction.clicked) {
-			reaction = { ...reaction, quantity: reaction.quantity + 1 };
-		} else {
-			reaction = { ...reaction, quantity: reaction.quantity - 1 };
-		}
+		let newReaction = { ...reaction, clicked: !reaction.clicked };
 
-		dispatch('reactionClicked', { reaction });
+		if (newReaction.clicked) {
+			newReaction = { ...newReaction, quantity: reaction.quantity + 1 };
+		} else {
+			newReaction = { ...newReaction, quantity: reaction.quantity - 1 };
+		}
+		reaction = newReaction;
+
+		dispatch('reactionClicked', { reaction: newReaction });
 	};
 </script>
 
