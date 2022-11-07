@@ -12,11 +12,17 @@
 	--srReactionClickedBg: #f0f0f0;
 	--srReactionNotClickedBg: #ffffff;
 	--srReactionHoverBg: #f0f0f0;
+	--srReactionClickedHoverBg: #f0f0f0;
 	--srEmojiColor: #888888;
+	--srEmojiClickedColor: #888888;
 
 	/* Labels and Container */
 	--srLabelBorderColor: #888888;
+	--srLabelClickedBorderColor: #888888;
 	--srLabelBg: #faf9f9;
+	--srLabelClickedBg: #faf9f9;
 	--srLabelColor: #888888;
+	--srLabelClickedColor: #888888;
 	--srLabelHoverBg: #f0f0f0;
+	--srLabelClickedHoverBg: #f0f0f0;
 }

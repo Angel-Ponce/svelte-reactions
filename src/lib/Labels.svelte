@@ -36,6 +36,15 @@
 		{#if reaction.quantity > 0}
 			<div
 				class="label"
+				style={`--border-color: ${
+					reaction.clicked ? 'var(--srLabelClickedBorderColor)' : 'var(--srLabelBorderColor)'
+				}; --bg-color: ${
+					reaction.clicked ? 'var(--srLabelClickedBg)' : 'var(--srLabelBg)'
+				}; --color: ${
+					reaction.clicked ? 'var(--srLabelClickedColor)' : 'var(--srLabelColor)'
+				};  --hover-color: ${
+					reaction.clicked ? 'var(--srLabelClickedHoverBg)' : 'var(--srLabelHoverBg)'
+				};`}
 				on:click={() => {
 					handleLabelClick(reaction.id);
 				}}
@@ -65,11 +74,11 @@
 		display: flex;
 		align-items: center;
 		gap: 5px;
-		border: 1px var(--srLabelBorderColor) solid;
+		border: 1px var(--border-color) solid;
 		border-radius: 9999px;
 		padding: 2px 5px 2px 5px;
-		background-color: var(--srLabelBg);
-		color: var(--srLabelColor);
+		background-color: var(--bg-color);
+		color: var(--color);
 		cursor: pointer;
 		user-select: none;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
@@ -91,6 +100,6 @@
 	}
 
 	.label:hover {
-		background-color: var(--srLabelHoverBg);
+		background-color: var(--hover-color);
 	}
 </style>

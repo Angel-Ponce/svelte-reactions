@@ -39,6 +39,8 @@
 	class="reaction"
 	style={`--bg-color: ${
 		reaction.clicked ? 'var(--srReactionClickedBg)' : 'var(--srReactionNotClickedBg)'
+	}; --hover-color: ${
+		reaction.clicked ? 'var(--srReactionClickedHoverBg)' : 'var(--srReactionHoverBg)'
 	}; --delay: ${(position + 1) * 100}ms;`}
 	on:mousedown={() => {
 		toggleClick(true);
@@ -49,7 +51,10 @@
 	on:click={handleClick}
 	tabindex="0"
 >
-	<span class={`emoji ${focus && 'focus'}`}>
+	<span
+		class={`emoji ${focus && 'focus'}`}
+		style={`color: ${reaction.clicked ? 'var(--srEmojiClickedColor)' : 'var(--srEmojiColor)'};`}
+	>
 		{#if typeof reaction.reaction == 'string'}
 			{reaction.reaction}
 		{:else}
@@ -76,7 +81,7 @@
 	}
 
 	.reaction:hover {
-		background-color: var(--srReactionHoverBg);
+		background-color: var(--hover-color);
 	}
 
 	.reaction .emoji {
@@ -86,7 +91,6 @@
 		font-size: 1.2rem;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',
 			Geneva, Verdana, sans-serif;
-		color: var(--srEmojiColor);
 		max-width: 35px;
 		max-height: 35px;
 		overflow: hidden;
