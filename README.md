@@ -99,11 +99,17 @@ We expose some CSS Variables to make more easy customize the colors of the compo
 | --srReactionClickedBg | Define the background color of reaction block when this is already clicked |
 | --srReactionNotClickedBg | Define the background color of reaction block when this is not already clicked |
 | --srReactionHoverBg | Define the background hover color of reaction block |
+| --srReactionClickedHoverBg | Define the background hover color of reaction block when this is already clicked |
 | --srEmojiColor | Define the text color of reaction |
+| --srEmojiClickedColor | Define the text color of reaction when this is already clicked |
 | --srLabelBorderColor | Define the border color of default label component |
+| --srLabelClickedBorderColor | Define the border color of default label component when reaction is already clicked |
 | --srLabelBg | Define the background color of default label component |
+| --srLabelClickedBg | Define the background color of default label component when reaction is already clicked |
 | --srLabelColor | Define the text color of default label component |
+| --srLabelClickedColor | Define the text color of default label component when reaction is already clicked |
 | --srLabelHoverBg | Define the background hover color of default label component |
+| --srLabelClickedHoverBg | Define the background hover color of default label component when reaction is already clicked |
 
 Then you can use this variables to customize the component, for example:
 
