@@ -5,4 +5,5 @@ export interface ReactionType {
 	reaction: string | typeof SvelteComponent;
 	quantity: number;
 	clicked: boolean;
+	[key: string]: unknown;
 }
