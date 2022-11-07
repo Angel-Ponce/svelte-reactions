@@ -49,7 +49,15 @@
 					handleLabelClick(reaction.id);
 				}}
 			>
-				{#if typeof reaction.reaction == 'string'}
+				{#if reaction.labelReaction != undefined}
+					{#if typeof reaction.labelReaction == 'string'}
+						<div>{reaction.labelReaction}</div>
+					{:else}
+						<div class="label-component">
+							<svelte:component this={reaction.labelReaction} />
+						</div>
+					{/if}
+				{:else if typeof reaction.reaction == 'string'}
 					<div>{reaction.reaction}</div>
 				{:else}
 					<div class="label-component">
