@@ -158,6 +158,7 @@ If you need to be more strict, always you can overwrite the next classes to get 
 | :------- | :--: | ----------: | 
 | `id` | string | Identifier of a reaction, useful for bind data with your database. |
 | `reaction` | string \| SvelteComponent | You can use any `string` for a reaction, however we recomend you to use a string with 1 value of lenght, when you use an `SvelteComponent` as reaction, components like `svg` or `img` or any other, we recomend you to use this sizes: `width` between `20px` and `35px` same as height. |
+| `labelReaction` | string \| SvelteComponent \| undefined | Same as `reaction` property, this define the reaction representation on summary labels (by default this value is equal to provided `reaction` value |
 | `quantity` | number | Define the quantity of reactions, for example 50 likes in some post. |
 | `clicked` | boolean | Define if the current user clicked some reaction. | 
 
